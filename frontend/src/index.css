@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .glass-panel {
+    background: rgba(18, 18, 18, 0.7);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .bg-cinema {
+    background-image: linear-gradient(rgba(5, 5, 5, 0.6), rgba(5, 5, 5, 0.9)), url('https://lh3.googleusercontent.com/aida-public/AB6AXuBwvsfelMrf5AyiycLwN0GskvNBSkQU9cB1HdHnbGmBOFax8Co-9Um_B4MLTAlbRSwgrRH9Td5a-SFra89c0FG1p_giBENaEPg4G6PcPJkBqMNkhTG4Bc_nKMTjfkLffOxvu0XytUXm55KwMdRNIkqihLuUXqRzBpwhCcZFeu9wwibnNh48A5omhVcsosvN1XwxxVH5N-B5a7yJcGc1Jc0C4dsqpEiybY80z495BPa15RbLbTJ5lejG9tDB3X3HPMtHjyRO0Ul2QyU');
+    background-size: cover;
+    background-position: center;
+  }
+}

@@ -1,8 +1,6 @@
 import { NavLink } from 'react-router-dom'
 
 const footerLinks = [
-  { to: '/catalog',  label: 'Exploración' },
-  { to: '/diary',    label: 'Mi Diario'   },
   { to: '/privacy',  label: 'Privacidad'  },
   { to: '/terms',    label: 'Términos'    },
   { to: '/contact',  label: 'Contacto'   },
@@ -11,14 +9,14 @@ const footerLinks = [
 export const Footer = () => {
   return (
     <footer className="
-      w-full px-margin py-xl mt-auto
+      w-full px-margin py-md mt-auto
       flex flex-col md:flex-row justify-between items-center gap-md
-      bg-surface-container-lowest
+      bg-surface/80 backdrop-blur-xl
       border-t border-white/5
     ">
       <NavLink
         to="/"
-        className="font-title-sm text-title-sm font-bold text-primary-container"
+        className="font-headline-md text-headline-md font-bold tracking-tight text-primary-container"
       >
         CineLog
       </NavLink>
@@ -30,8 +28,8 @@ export const Footer = () => {
             to={to}
             className={({ isActive }) =>
               isActive
-                ? 'text-primary font-bold text-body-md font-body-md hover:text-primary transition-colors'
-                : 'text-on-surface-variant text-body-md font-body-md hover:text-primary transition-colors'
+                ? 'text-primary-container text-label-caps font-label-caps transition-colors duration-300'
+                : 'text-on-surface-variant hover:text-on-surface text-label-caps font-label-caps transition-colors duration-200'
             }
           >
             {label}

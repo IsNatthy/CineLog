@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
-import { Search, CircleUser } from 'lucide-react'
+import { Search, CircleUser, LogOut } from 'lucide-react'
+import { useAuth } from '../../features/auth/hooks/useAuth'
 
 const navLinks = [
   { to: '/catalog',   label: 'Exploración' },
@@ -8,6 +9,8 @@ const navLinks = [
 ]
 
 export const Navbar = () => {
+  const { logout } = useAuth();
+
   return (
     <header className="
       fixed top-0 left-0 w-full z-50
@@ -42,10 +45,18 @@ export const Navbar = () => {
 
       <div className="flex items-center gap-sm">
         <button aria-label="Buscar" className="text-on-surface-variant hover:text-on-surface transition-colors">
-          <Search size={20} />
+          <Search size={24} />
         </button>
         <button aria-label="Perfil" className="text-on-surface-variant hover:text-on-surface transition-colors">
-          <CircleUser size={20} />
+          <CircleUser size={24} />
+        </button>
+        <button 
+          aria-label="Cerrar sesión" 
+          className="text-error hover:text-error-container transition-colors ml-2"
+          onClick={logout}
+          title="Cerrar sesión"
+        >
+          <LogOut size={24} />
         </button>
       </div>
     </header>

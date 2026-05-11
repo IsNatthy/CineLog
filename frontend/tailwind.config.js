@@ -93,7 +93,7 @@ export default {
       fontSize: {
         'title-sm':    ['20px', { lineHeight: '1.4',  fontWeight: '600' }],
         'body-md':     ['16px', { lineHeight: '1.6',  fontWeight: '400' }],
-        'label-caps':  ['12px', { lineHeight: '1',    letterSpacing: '0.1em', fontWeight: '700' }],
+        'label-caps':  ['14px', { lineHeight: '1',    letterSpacing: '0.1em', fontWeight: '700' }],
         'headline-md': ['32px', { lineHeight: '1.2',  fontWeight: '600' }],
         'display-lg':  ['48px', { lineHeight: '1.1',  letterSpacing: '-0.02em', fontWeight: '700' }],
       },
