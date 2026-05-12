@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Table(name = "diary_entries")
 @Getter
 @Setter
@@ -13,6 +15,7 @@ public class DiaryEntry {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "diary_id",  nullable = false)
     private Long id;
 
     @ManyToOne
@@ -27,4 +30,7 @@ public class DiaryEntry {
     private Double rating;
     @Column(name = "review")
     private String review;
+
+    @Column(name = "watchDate")
+    private LocalDate watchDate;
 }
