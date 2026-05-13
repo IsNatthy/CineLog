@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @Getter
 public class TmdbConfig {
 
-    @Value("${tmbd.base.url}")
+    @Value("${tmdb.base.url}")
     private String baseUrl;
     @Value("${tmdb.api.key}")
     private String apiKey;
