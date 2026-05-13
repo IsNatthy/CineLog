@@ -7,7 +7,9 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
@@ -34,8 +36,11 @@ public class Users {
     @Column(name = "birthday",  nullable = false)
     private LocalDate birthday;
 
-    @Column(name = "createdAt", nullable = false)
+    @Column(name = "createdAt")
     private LocalDateTime createdAt;
     @Column(name = "modifiedAt")
     private LocalDateTime modifiedAt;
+
+    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
+    private List<DiaryEntry> diaryEntries;
 }
