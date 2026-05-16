@@ -5,11 +5,13 @@ import lombok.Data;
 import java.time.LocalDate;
 
 @Data
-public class DiaryEntryRequest {
+public class LogEntryRequest {
 
-    private Long tmdbId; //pelicula a guardar
+    private Long userId;
+    private Long movieId;
     private Double rating;
-    private String review;
+    private String body;
+    private Boolean isRewatch;
     private LocalDate watchDate;
 
 }
