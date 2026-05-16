@@ -1,20 +1,20 @@
 package com.example.backend.services;
 
-import com.example.backend.dto.request.UsersRequest;
-import com.example.backend.dto.response.UsersResponse;
+import com.example.backend.dto.request.UserRequest;
+import com.example.backend.dto.response.UserResponse;
 
 import java.util.List;
 
-public interface UsersService {
+public interface UserService {
 
-    UsersResponse createUser(UsersRequest usersRequest);
+    UserResponse createUser(UserRequest userRequest);
 
-    List<UsersResponse> findAllUsers();
+    List<UserResponse> findAllUsers();
 
-    UsersResponse findUserById(Long id);
+    UserResponse findUserById(Long id);
 
-    UsersResponse updateUser(Long id, UsersRequest usersRequest);
+    UserResponse updateUser(Long id, UserRequest userRequest);
 
-    UsersResponse deleteUser(Long id);
+    UserResponse deleteUser(Long id);
 
 }

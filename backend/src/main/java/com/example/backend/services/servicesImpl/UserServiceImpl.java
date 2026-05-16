@@ -1,68 +1,68 @@
 package com.example.backend.services.servicesImpl;
 
-import com.example.backend.dto.request.UsersRequest;
-import com.example.backend.dto.response.UsersResponse;
+import com.example.backend.dto.request.UserRequest;
+import com.example.backend.dto.response.UserResponse;
 import com.example.backend.entities.User;
-import com.example.backend.mapper.UsersMapper;
-import com.example.backend.repositories.UsersRepository;
-import com.example.backend.services.UsersService;
+import com.example.backend.mapper.UserMapper;
+import com.example.backend.repositories.UserRepository;
+import com.example.backend.services.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class UsersServiceImpl implements UsersService {
+public class UserServiceImpl implements UserService {
 
-    private final UsersRepository userRepository;
-    private final UsersMapper usersMapper;
+    private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
-    public UsersServiceImpl(UsersRepository userRepository, UsersMapper usersMapper) {
+    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
-        this.usersMapper = usersMapper;
+        this.userMapper = userMapper;
     }
 
     @Override
-    public UsersResponse findUserById(Long id) {
+    public UserResponse findUserById(Long id) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found with id" + id));
 
-        return usersMapper.entityToResponse(user);
+        return userMapper.entityToResponse(user);
     }
 
     @Override
-    public UsersResponse createUser(UsersRequest usersRequest) {
-        User userEntity = usersMapper.requestToEntity(usersRequest);
+    public UserResponse createUser(UserRequest userRequest) {
+        User userEntity = userMapper.requestToEntity(userRequest);
 
         User savedUser = userRepository.save(userEntity);
 
-        return usersMapper.entityToResponse(savedUser);
+        return userMapper.entityToResponse(savedUser);
     }
 
     @Override
-    public UsersResponse updateUser(Long id, UsersRequest usersRequest) {
+    public UserResponse updateUser(Long id, UserRequest userRequest) {
 
         User existingUser = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found with id" + id));
 
-        usersMapper.updateUsersFromDTO(usersRequest, existingUser);
+        userMapper.updateUsersFromDTO(userRequest, existingUser);
 
-        return usersMapper.entityToResponse(userRepository.save(existingUser));
+        return userMapper.entityToResponse(userRepository.save(existingUser));
     }
 
     @Override
-    public UsersResponse deleteUser(Long id) {
+    public UserResponse deleteUser(Long id) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found with id" + id));
 
         userRepository.delete(user);
-        return  usersMapper.entityToResponse(user);
+        return  userMapper.entityToResponse(user);
     }
 
     @Override
-    public List<UsersResponse> findAllUsers() {
+    public List<UserResponse> findAllUsers() {
         return userRepository.findAll().stream()
-                .map(usersMapper::entityToResponse)
+                .map(userMapper::entityToResponse)
                 .collect(Collectors.toList());
     }
 }
