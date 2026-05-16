@@ -3,14 +3,12 @@ package com.example.backend.dto.request;
 import lombok.Data;
 
 @Data
-public class UsersRequest {
+public class UserRequest {
 
-    private String name;
-    private String surname;
+    private String username;
     private String email;
     private String password;
     private String birthday;
 
     private String createdAt;
-    private String updatedAt;
 }

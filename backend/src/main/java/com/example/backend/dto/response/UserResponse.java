@@ -3,11 +3,10 @@ package com.example.backend.dto.response;
 import lombok.Data;
 
 @Data
-public class UsersResponse {
+public class UserResponse {
 
     private Long id;
-    private String name;
-    private String surname;
+    private String username;
     private String email;
 
 }

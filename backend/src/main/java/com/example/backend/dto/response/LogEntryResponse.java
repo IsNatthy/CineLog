@@ -3,14 +3,19 @@ package com.example.backend.dto.response;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
-public class DiaryEntryResponse {
+public class LogEntryResponse {
 
     private Long id;
+    private Long userId;
+    private Long movieId;
     private Double rating;
-    private String review;
+    private String body;
+    private Boolean isRewatch;
     private LocalDate watchDate;
-    private MediaResponse media;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
 }
