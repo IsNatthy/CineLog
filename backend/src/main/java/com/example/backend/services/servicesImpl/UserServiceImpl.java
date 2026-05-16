@@ -2,7 +2,7 @@ package com.example.backend.services.servicesImpl;
 
 import com.example.backend.dto.request.UsersRequest;
 import com.example.backend.dto.response.UsersResponse;
-import com.example.backend.entities.Users;
+import com.example.backend.entities.User;
 import com.example.backend.mapper.UsersMapper;
 import com.example.backend.repositories.UsersRepository;
 import com.example.backend.services.UsersService;
@@ -24,17 +24,17 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public UsersResponse findUserById(Long id) {
-        Users users = userRepository.findById(id)
+        User user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found with id" + id));
 
-        return usersMapper.entityToResponse(users);
+        return usersMapper.entityToResponse(user);
     }
 
     @Override
     public UsersResponse createUser(UsersRequest usersRequest) {
-        Users UsersEntity = usersMapper.requestToEntity(usersRequest);
+        User userEntity = usersMapper.requestToEntity(usersRequest);
 
-        Users savedUser = userRepository.save(UsersEntity);
+        User savedUser = userRepository.save(userEntity);
 
         return usersMapper.entityToResponse(savedUser);
     }
@@ -42,7 +42,7 @@ public class UsersServiceImpl implements UsersService {
     @Override
     public UsersResponse updateUser(Long id, UsersRequest usersRequest) {
 
-        Users existingUser = userRepository.findById(id)
+        User existingUser = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found with id" + id));
 
         usersMapper.updateUsersFromDTO(usersRequest, existingUser);
@@ -52,11 +52,11 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public UsersResponse deleteUser(Long id) {
-        Users users = userRepository.findById(id)
+        User user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found with id" + id));
 
-        userRepository.delete(users);
-        return  usersMapper.entityToResponse(users);
+        userRepository.delete(user);
+        return  usersMapper.entityToResponse(user);
     }
 
     @Override

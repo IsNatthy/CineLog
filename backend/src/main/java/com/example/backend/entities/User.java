@@ -14,17 +14,15 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Table(name = "users")
-public class Users {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "users_id", nullable = false)
+    @Column(name = "user_id", nullable = false)
     private Long id;
 
-    @Column(name = "name", nullable = false)
-    private String name;
-    @Column(name = "surname",  nullable = false)
-    private String surname;
+    @Column(name = "username", nullable = false)
+    private String username;
     @Column(name = "email",  nullable = false, unique  = true)
     private String email;
 
@@ -33,14 +31,18 @@ public class Users {
     @Transient
     private String confirmPassword;
 
-    @Column(name = "birthday",  nullable = false)
-    private LocalDate birthday;
+    @Column(name = "bio")
+    private String bio;
+
+    @Column(name = "avatar_url")
+    private String avatarUrl;
 
     @Column(name = "createdAt")
     private LocalDateTime createdAt;
-    @Column(name = "modifiedAt")
-    private LocalDateTime modifiedAt;
 
-    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
-    private List<DiaryEntry> diaryEntries;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<LogEntry> logEntries;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<UserMovie> userMovies;
 }
